@@ -8,17 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		AD0465F72BF25AD500A7D1B9 /* Stanford_classApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0465F62BF25AD500A7D1B9 /* Stanford_classApp.swift */; };
-		AD0465F92BF25AD500A7D1B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0465F82BF25AD500A7D1B9 /* ContentView.swift */; };
+		AD0465F92BF25AD500A7D1B9 /* EmojiMemoryGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0465F82BF25AD500A7D1B9 /* EmojiMemoryGameView.swift */; };
 		AD0465FB2BF25AD600A7D1B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD0465FA2BF25AD600A7D1B9 /* Assets.xcassets */; };
 		AD0465FE2BF25AD600A7D1B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD0465FD2BF25AD600A7D1B9 /* Preview Assets.xcassets */; };
+		AD0466052BF4757800A7D1B9 /* MemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0466042BF4757800A7D1B9 /* MemoryGame.swift */; };
+		AD0466072BF475EF00A7D1B9 /* EmojiMemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0466062BF475EF00A7D1B9 /* EmojiMemoryGame.swift */; };
+		ADFD78972BF70DFB00B3E21D /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFD78962BF70DFB00B3E21D /* Theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AD0465F32BF25AD500A7D1B9 /* Stanford-class.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stanford-class.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD0465F62BF25AD500A7D1B9 /* Stanford_classApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stanford_classApp.swift; sourceTree = "<group>"; };
-		AD0465F82BF25AD500A7D1B9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AD0465F82BF25AD500A7D1B9 /* EmojiMemoryGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGameView.swift; sourceTree = "<group>"; };
 		AD0465FA2BF25AD600A7D1B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD0465FD2BF25AD600A7D1B9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AD0466042BF4757800A7D1B9 /* MemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGame.swift; sourceTree = "<group>"; };
+		AD0466062BF475EF00A7D1B9 /* EmojiMemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGame.swift; sourceTree = "<group>"; };
+		ADFD78962BF70DFB00B3E21D /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +57,11 @@
 		AD0465F52BF25AD500A7D1B9 /* Stanford-class */ = {
 			isa = PBXGroup;
 			children = (
+				ADFD78962BF70DFB00B3E21D /* Theme.swift */,
+				AD0466062BF475EF00A7D1B9 /* EmojiMemoryGame.swift */,
+				AD0466042BF4757800A7D1B9 /* MemoryGame.swift */,
 				AD0465F62BF25AD500A7D1B9 /* Stanford_classApp.swift */,
-				AD0465F82BF25AD500A7D1B9 /* ContentView.swift */,
+				AD0465F82BF25AD500A7D1B9 /* EmojiMemoryGameView.swift */,
 				AD0465FA2BF25AD600A7D1B9 /* Assets.xcassets */,
 				AD0465FC2BF25AD600A7D1B9 /* Preview Content */,
 			);
@@ -137,8 +146,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD0465F92BF25AD500A7D1B9 /* ContentView.swift in Sources */,
+				AD0465F92BF25AD500A7D1B9 /* EmojiMemoryGameView.swift in Sources */,
 				AD0465F72BF25AD500A7D1B9 /* Stanford_classApp.swift in Sources */,
+				ADFD78972BF70DFB00B3E21D /* Theme.swift in Sources */,
+				AD0466052BF4757800A7D1B9 /* MemoryGame.swift in Sources */,
+				AD0466072BF475EF00A7D1B9 /* EmojiMemoryGame.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
