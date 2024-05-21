@@ -9,22 +9,21 @@ import SwiftUI
 
 struct EmojiMemoryGameView: View {
     @ObservedObject var viewModel: EmojiMemoryGame
+    
+    private let aspectRatio: CGFloat = 1 
         
     var body: some View {
         VStack {
             Text("Memorize!")
                 .font(.title)
                 .bold()
-            ScrollView {
-                cards
-                    .animation(.default, value: viewModel.cards)
-            }
+            cards
+                .animation(.default, value: viewModel.cards)
+            
             Spacer()
             HStack(spacing: 30) {
-                themeButton(text: "Haloween", image: "person.fill")
-                themeButton(text: "Vehicles", image: "car.fill")
-                themeButton(text: "Sea", image: "water.waves")
                 themeButton(text: "Shuffle", image: "water.waves")
+                themeButton(text: "NewGame", image: "water.waves")
             }
         }.padding()
     }
@@ -34,6 +33,8 @@ struct EmojiMemoryGameView: View {
     // -- VIEW AND FUNCTION ---
     func changeTheme(to text: String) {
         switch text {
+        case "NewGame":
+            viewModel.newGame()
         case "Shuffle":
             viewModel.shuffle()
         default:
@@ -41,22 +42,16 @@ struct EmojiMemoryGameView: View {
             viewModel.shuffle()
         }
     }
+    
+    @ViewBuilder
     var cards: some View {
-        LazyVGrid(columns: [GridItem(.adaptive(minimum: 80), spacing: 0)], spacing: 0)  {
-            ForEach(viewModel.cards) { card in
-                VStack {
-                    CardView(card)
-                        .aspectRatio(2/3, contentMode: .fit)
-                        .padding(4)
-                        .onTapGesture {
-                            viewModel.choose(card)
-                        }
-                    Text(card.id)
-                }
-               
+        AspectVGrid(viewModel.cards, aspectRatio:aspectRatio) { card in
+            CardView(card)
+                .padding(4)
+                .onTapGesture {
+                    viewModel.choose(card)
             }
-        }
-        .foregroundColor(Color.orange)
+        }.foregroundColor(Color.orange)
     }
     
     func themeButton(text: String, image: String) -> some View {
@@ -103,7 +98,7 @@ struct CardView: View {
             .opacity(card.isFaceup ? 1 : 0)
             base.fill()
                 .opacity(card.isFaceup ? 0 : 1)
-        }.opacity(card.isMatched ? 0 : 1)
+        }.opacity(card.isMatched && !card.isFaceup ? 0 : 1)
         
     }
 }

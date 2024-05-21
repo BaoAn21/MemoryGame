@@ -5,20 +5,54 @@
 //  Created by Trần Ân on 17/5/24.
 //
 
-import Foundation
+import SwiftUI
 
 struct Theme {
     var name: String
-    var emojiSet: [String]
-    var color: String
-    var numberOfPairs: Int
+    var emojis: [String]
+    var color: Color
+    var accentColor: Color
+    var noOfPairs: Int
 }
 
-struct ThemeSet {
-    static let Sea = ["a","b","c","d"]
-    static let Haloween = ["e","f","g"]
-    static let Vehicle = ["1","2","3","4"]
-}
+let themes: [Theme] = [
+    Theme(
+        name: "Halloween",
+        emojis: ["👻","🎃","🕷","🧟‍♂️","🧛🏼‍♀️","☠️","👽","🦹‍♀️","🦇","🌘","⚰️","🔮"],
+        color: .orange,
+        accentColor: .red,
+        noOfPairs: 10),
+    Theme(
+        name: "Flags",
+        emojis: ["🇸🇬","🇯🇵","🏴‍☠️","🏳️‍🌈","🇬🇧","🇹🇼","🇺🇸","🇦🇶","🇰🇵","🇭🇰","🇲🇨","🇼🇸","b","b","b","b","b","b"],
+        color: .red,
+        accentColor: .blue,
+        noOfPairs: 10),
+    Theme(
+        name: "Animals",
+        emojis: ["🦑","🦧","🦃","🦚","🐫","🦉","🦕","🦥","🐸","🐼","🐺","🦈","a","a","a","a","a","a","a"],
+        color: .green,
+        accentColor: .yellow,
+        noOfPairs: 10),
+    Theme(
+        name: "Places",
+        emojis: ["🗽","🗿","🗼","🎢","🌋","🏝","🏜","⛩","🕍","🕋","🏯","🏟"],
+        color: .blue,
+        accentColor: .green,
+        noOfPairs: 10),
+    Theme(
+        name: "Sports",
+        emojis: ["🤺","🏑","⛷","⚽️","🏀","🪂","🥏","⛳️","🛹","🎣","🏉","🏓"],
+        color: .purple,
+        accentColor: .orange,
+        noOfPairs: 10),
+    Theme(
+        name: "Foods",
+        emojis: ["🌮","🍕","🍝","🍱","🍪","🍩","🥨","🥖","🍟","🍙","🍢","🍿"],
+        color: .yellow,
+        accentColor: .red,
+        noOfPairs: 10)
+]
 
 
 

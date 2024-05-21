@@ -28,25 +28,29 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
     mutating func choose(_ card: Card) {
         if let chosenIndex = cards.firstIndex(where: { $0.id == card.id }) {
             if !cards[chosenIndex].isFaceup && !cards[chosenIndex].isMatched {
-                if let potentialMatch = indexOfOneAndOnlyFaceUpCard {
+                if let potentialMatch = indexOfOneAndOnlyFaceUpCard { // If there is already a face up card
+                    // Mark two card as matched if their content is match
                     if cards[potentialMatch].content == cards[chosenIndex].content {
                         cards[potentialMatch].isMatched = true
                         cards[chosenIndex].isMatched = true
                     }
-                } else {
+                    cards[chosenIndex].isFaceup = true
+                } else { // If no card is already face up, mark this card as only card face up
                     indexOfOneAndOnlyFaceUpCard = chosenIndex
                 }
-                cards[chosenIndex].isFaceup = true
             }
-            
         }
-        
     }
+    
+    // Handle score
+    
     
     mutating func shuffle() {
         cards.shuffle()
     }
+
     
+    // Card Struct
     struct Card: Equatable, Identifiable, CustomDebugStringConvertible {
         var debugDescription: String {
             return "\(id): \(content) \(isFaceup ? "up" : "down") \(isMatched ? "match": "non")"
