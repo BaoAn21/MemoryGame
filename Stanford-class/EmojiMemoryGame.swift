@@ -21,7 +21,7 @@ class EmojiMemoryGame: ObservableObject {
     }
     
     private static func createMemoryGame(gameTheme: Theme) -> MemoryGame<String> {
-        return MemoryGame(numberOfPairsOfCards: gameTheme.emojis.count) { index in
+        return MemoryGame(numberOfPairsOfCards: 3) { index in
             if gameTheme.emojis.indices.contains(index) {
                 return gameTheme.emojis[index]
             } else {
@@ -30,6 +30,9 @@ class EmojiMemoryGame: ObservableObject {
         }
     }
     
+    var score: Int {
+        gameModel.score
+    }
     
     
     var cards: Array<MemoryGame<String>.Card> {

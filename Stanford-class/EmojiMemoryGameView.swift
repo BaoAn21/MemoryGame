@@ -8,21 +8,22 @@
 import SwiftUI
 
 struct EmojiMemoryGameView: View {
+    typealias Card = MemoryGame<String>.Card
+    
     @ObservedObject var viewModel: EmojiMemoryGame
     
-    private let aspectRatio: CGFloat = 1 
-        
+    private let aspectRatio: CGFloat = 2/3    
     var body: some View {
         VStack {
             Text("Memorize!")
                 .font(.title)
                 .bold()
             cards
-                .animation(.default, value: viewModel.cards)
-            
             Spacer()
             HStack(spacing: 30) {
                 themeButton(text: "Shuffle", image: "water.waves")
+                Text("\(viewModel.score)")
+                    .animation(nil)
                 themeButton(text: "NewGame", image: "water.waves")
             }
         }.padding()
@@ -43,21 +44,38 @@ struct EmojiMemoryGameView: View {
         }
     }
     
-    @ViewBuilder
+    
     var cards: some View {
         AspectVGrid(viewModel.cards, aspectRatio:aspectRatio) { card in
-            CardView(card)
-                .padding(4)
-                .onTapGesture {
-                    viewModel.choose(card)
+            ZStack {
+                FlyingNumber(number: scoreChange(causedBy: card)).zIndex(1)
+                CardView(card)
+                    .padding(4)
+                    .onTapGesture {
+                        withAnimation(.easeInOut(duration: 1)) {
+                            let scoreBeforeChoosing = viewModel.score
+                            viewModel.choose(card)
+                            let scoreChange = viewModel.score - scoreBeforeChoosing
+                            lastScoreChange = (scoreChange, causedByCardID: card.id)
+                        }
+                    }.foregroundColor(Color.red)
             }
-        }.foregroundColor(Color.orange)
+        }
+    }
+    
+    @State private var lastScoreChange = (0, causedByCardID: "")
+    
+    func scoreChange(causedBy card: Card) -> Int {
+        let (amount, id) = lastScoreChange
+        return card.id == id ? amount : 0
     }
     
     func themeButton(text: String, image: String) -> some View {
         VStack {
             Button(action: {
-                changeTheme(to: text)
+                withAnimation {
+                    changeTheme(to: text)
+                }
             }) {
                 VStack {
                     Image(systemName: image)
@@ -69,36 +87,6 @@ struct EmojiMemoryGameView: View {
                 
             }
         }
-        
-    }
-}
-
-
-// -- BIGVIEW
-struct CardView: View {
-    
-    let card: MemoryGame<String>.Card
-    
-    init(_ card: MemoryGame<String>.Card) {
-        self.card = card
-    }
-    
-    var body: some View {
-        ZStack {
-            let base = RoundedRectangle(cornerRadius: 12)
-            Group {
-                base
-                    .fill(Color.white)
-                    .strokeBorder(lineWidth: 2)
-                Text(card.content)
-                    .font(.system(size: 200))
-                    .minimumScaleFactor(0.01)
-                    .aspectRatio(1,contentMode: .fit)
-            }
-            .opacity(card.isFaceup ? 1 : 0)
-            base.fill()
-                .opacity(card.isFaceup ? 0 : 1)
-        }.opacity(card.isMatched && !card.isFaceup ? 0 : 1)
         
     }
 }
